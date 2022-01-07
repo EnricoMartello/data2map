@@ -21,6 +21,6 @@ Future upgrade:
 - [ ] possible bug in the room count part of the code, where objects smaller than a certain amount are ignored.
 
 # How to
-Before launching the 'data2map.py' script, assuming all the packages needed are installed, the only requirement is that both the floormap and the excel file containing the data are in the same folder.
+Before launching the `data2map.py` script, assuming all the packages needed are installed, the only requirement is that both the floormap and the excel file containing the data are in the same folder.
 
-Once that is done, launch the script 'data2map.py' and follow the instructions.
+Once that is done, launch the script `data2map.py` and follow the instructions.
