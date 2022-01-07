@@ -17,4 +17,10 @@ The idea is the following:
 Future upgrade:
 - [ ] make the PoM selection process smarter, closing the figure as soon as the number of measurements is reached;
 - [ ] make the GUI nicer and clearer;
-- [ ] enable one to use various floor maps, not only office-like ones
+- [ ] enable one to use various floor maps, not only office-like ones;
+- [ ] possible bug in the room count part of the code, where objects smaller than a certain amount are ignored.
+
+# How to
+Before launching the 'data2map.py' script, assuming all the packages needed are installed, the only requirement is that both the floormap and the excel file containing the data are in the same folder.
+
+Once that is done, launch the script 'data2map.py' and follow the instructions.
