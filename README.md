@@ -1,5 +1,5 @@
 # data2map
-***data2map*** is a software that is supposed to take the measurements from an excel file, and plot them superimposed to the floormap of the office/space where the measurement has occurred.
+***data2map*** is a software that takes noise or environmental optical radiation measurements from an excel file, and plot them on top of the floormap of the office/space where the measurement has occurred.
 
 The idea is the following:
  - measurements of either EOR (environmental optical radiation) or noise are performed and recorded into an excel file (.xcl or .xlsx) in a column;
@@ -24,6 +24,7 @@ Future upgrade:
 ## Upgrade 10.01.21
 - `get_points` has been modified so that now, if the number of PoM is different than the number of measurements, the software doesn't crash, yet it chops the longest of the two, and keeps working (after pointing out the issue.)
 - `room_borders` has been modified so that one can now select the rooms with a process explained in the popup -- Only works for rectangular rooms.
+- `requirements.txt` is the list of packages required in order to run the script (smoothly).  In order to install them all using `pip` type: ```pip install -r requirements.txt``` shouldn't it work, install them manually one by one (they are only 6, and probably some of them are already there). I am aware of only one issue with `tkinter` being too outdated, so in that case don't panic.
 
 
 # How to

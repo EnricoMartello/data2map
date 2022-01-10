@@ -6,8 +6,7 @@
  '''
 
 import cv2
-import imutils, os
-from imutils import perspective
+import os
 import numpy as np
 import PySimpleGUI as sg
 
