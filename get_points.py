@@ -1,3 +1,10 @@
+'''
+ # @ Author: Enrico Martello
+ # @ Create Time: 2022.01.10 11:34
+ # @ Modified time: 2022.01.10 11:44
+ # @ Description: Manages the selection of the PoM on the floor map.
+ '''
+
 # importing the module
 import cv2
 import os

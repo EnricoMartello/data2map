@@ -1,3 +1,10 @@
+'''
+ # @ Author: Enrico Martello
+ # @ Create Time: 2021.06.14 22:15
+ # @ Modified time: 2022.01.10 11:46
+ # @ Description: launcher of the whole software. Opens the first window, and gets the paths.
+ '''
+
 import PySimpleGUI as sg
 import os.path, runner
 global dataname, imgname

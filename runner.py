@@ -1,3 +1,10 @@
+'''
+ # @ Author: Enrico Martello
+ # @ Create Time: 2022.01.10 11:34
+ # @ Modified time: 2022.01.10 11:45
+ # @ Description: core of the softwware, manages the steps.
+ '''
+
 import data_master as dm
 import get_points as gp
 import room_borders as rb

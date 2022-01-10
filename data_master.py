@@ -1,3 +1,10 @@
+'''
+ # @ Author: Enrico Martello
+ # @ Create Time: 2021.06.05 20:38
+ # @ Modified time: 2022.01.10 11:50
+ # @ Description: extracts data from the excel file and is responsible for the selection of data type (noise vs EOR).
+ '''
+
 import openpyxl
 from openpyxl import load_workbook
 import matplotlib.pyplot as plt
@@ -14,9 +21,6 @@ def read_measures(dataname):
 	#print(wb.sheetnames)
 	#for i in range(20):
 	#	print(sh.cell(row=3, column=i+1).value)
-
-#if color_in_hex !=0 we are considering a wall!!!
-
 
 def select_sheet(dataname):
 	wb = load_workbook(dataname, data_only = True);

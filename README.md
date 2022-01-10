@@ -19,7 +19,12 @@ Future upgrade:
 - [ ] make the PoM selection process smarter, closing the figure as soon as the number of measurements is reached;
 - [ ] make the GUI nicer and clearer;
 - [ ] enable one to use various floor maps, not only office-like ones;
-- [ ] possible bug in the room count part of the code, where objects smaller than a certain amount are ignored.
+- [x] possible bug in the room count part of the code, where objects smaller than a certain amount are ignored. *10.01.21*
+
+## Upgrade 10.01.21
+- `get_points` has been modified so that now, if the number of PoM is different than the number of measurements, the software doesn't crash, yet it chops the longest of the two, and keeps working (after pointing out the issue.)
+- `room_borders` has been modified so that one can now select the rooms with a process explained in the popup -- Only works for rectangular rooms.
+
 
 # How to
 Before launching the `data2map.py` script, assuming all the packages needed are installed, the only requirement is that both the floormap and the excel file containing the data are in the same folder.

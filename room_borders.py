@@ -1,3 +1,10 @@
+'''
+ # @ Author: Enrico Martello
+ # @ Create Time: 2022.01.10 11:34
+ # @ Modified time: 2022.01.10 11:47
+ # @ Description: used for extracting the rooms from the image (which I can't automate it, at the moment) and then combines the plot of the data with the heatmap.
+ '''
+
 import cv2
 import imutils, os
 from imutils import perspective
@@ -16,7 +23,6 @@ def popup():
 			understood = True
 			break
 
-# clean_img_pathname = folder+'/clean_'+floor_plan; 
 def get_rooms(imgname):
 	[folder, name] = os.path.split(imgname);
 	rooms_path = folder+'/rooms_'+name+'.npy';
@@ -98,10 +104,3 @@ def data2room(full_data, img_pathname):
 				break;		# np.save(rooms_pathname,room)
 	# print("Room {} \n sizes {}".format(room,sizes))
 	return room, sizes
-
-# data= np.load('cleanmap.png_full.npy');
-# combine_plots(image_2,get_rooms('/Users/enrico/Documents/PhD/extras/help_dad/clean_map.png'))
-# print(rooms)
-
-	
-	
