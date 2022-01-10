@@ -20,12 +20,12 @@ def click_event(event, x, y, flags, params):
 		# displaying the coordinates on the image window
 		coords.append((x,y))
 		pointer = marker + str(len(coords))
+		cv2.putText(img, "Punti rimasti da selezionare: {}".format(n_max), (0,40), font, 2, (0, 0, 0), 2)
 		cv2.putText(img, pointer, (x-int(marker_width/2),y+int(marker_height/2)), font, 1, (0, 0, 255), 2)
 		cv2.imshow('image', img)
 
 	# checking for right mouse clicks	
 	if event==cv2.EVENT_RBUTTONDOWN:#EVENT_RBUTTONDBLCLK
-
 		x0,y0 = coords[len(coords)-1]
 		cv2.putText(img, marker, (x0-int(marker_width/2),y0+int(marker_height/2)), font, 1, (255, 255, 0), 2)
 		coords.pop()
@@ -37,9 +37,10 @@ def click_event(event, x, y, flags, params):
 
 # driver function
 #if __name__=="__main__":
-def core(filename):
+def core(filename,n=0):
 	# coords =[]
-	global coords_path
+	global coords_path,n_max
+	n_max=n
 	# reading the image
 	# print('---CORE HERE---')
 	[folder,floor_plan] = os.path.split(filename);
