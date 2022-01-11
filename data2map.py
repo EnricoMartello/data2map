@@ -11,7 +11,7 @@ import runner
 global dataname, imgname
 
 
-# First the window layout in 2 columns
+# * First the window layout in 2 columns
 
 img_list_column = [
     [sg.Text("Seleziona il file contenente la piantina:\n")],
@@ -25,7 +25,7 @@ xcl_list_column = [
                 size=(40, 20), key="-DATA LIST-")]
 ]
 
-# ----- Full layout -----
+# * ----- Full layout -----
 layout = [
     [
         sg.Text("Seleziona la cartella di lavoro:\n"),
@@ -41,17 +41,17 @@ layout = [
 
 window = sg.Window("Image Viewer", layout)
 
-# Run the Event Loop
+# * Run the Event Loop
 while True:
     event, values = window.read()
     if event == "Exit" or event == sg.WIN_CLOSED:
         break
-    # Folder name was filled in, make a list of files in the folder
+    # * Folder name was filled in, make a list of files in the folder
     if event == "-WORKING FOLDER-":
         folder_img = values["-WORKING FOLDER-"]
         folder_data = values["-WORKING FOLDER-"]
         try:
-            # Get list of files in folder
+            # * Get list of files in folder
             img_list = os.listdir(folder_img)
             data_list = os.listdir(folder_img)
             imgnames = [
@@ -68,14 +68,14 @@ while True:
             img_list = []
             data_list = []
 
-    elif event == "-IMG LIST-":  # A file was chosen from the listbox
+    elif event == "-IMG LIST-":  # * A file was chosen from the listbox
         try:
             imgname = os.path.join(
                 values["-WORKING FOLDER-"], values["-IMG LIST-"][0])
         except:
             pass
 
-    elif event == "-DATA LIST-":  # A file was chosen from the listbox
+    elif event == "-DATA LIST-":  # * A file was chosen from the listbox
         try:
             dataname = os.path.join(
                 values["-WORKING FOLDER-"], values["-DATA LIST-"][0])

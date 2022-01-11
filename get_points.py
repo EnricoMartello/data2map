@@ -16,7 +16,15 @@ global coords, ind
 coords = []
 
 
+# todo: investigate the role of flags and params (seems they're not used).
 def click_event(event, x, y, flags, params):
+    """records the position and  number of position selected on the floor map.
+
+    Args:
+        event (event): interaction event with the image
+        x (int): x position of the click
+        y (itn): y position of the click
+    """
     marker = '*'
     font = cv2.FONT_HERSHEY_SIMPLEX
     ((marker_width, marker_height), baseline) = cv2.getTextSize(marker, font, 1, 0)
@@ -44,12 +52,18 @@ def click_event(event, x, y, flags, params):
 
     np.save(coords_path, coords)
 
+# todo: investigate the role of n
 
-# driver function
-# if __name__=="__main__":
+
 def core(filename, n=0):
-    # coords =[]
+    """function that gets the points of measure on the floor map.
+
+    Args:
+        filename (string): path of the floor map
+        n (int, optional): to be investigated. Defaults to 0.
+    """
     global coords_path, n_max
+    # ? Does n do anything?
     n_max = n
     # reading the image
     # print('---CORE HERE---')

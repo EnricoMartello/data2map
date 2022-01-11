@@ -11,6 +11,17 @@ import matplotlib.pyplot as plt
 
 
 def heatmap(room, room_size, is_light=True, out_name='interpolated.png'):
+    """Creates the heatmap relative to each room
+
+    Args:
+        room (list): list containing the measures and the location of the measure in the room
+        room_size (array): array containing the dimensions of the room
+        is_light (bool, optional): whether data is about noise or radiation (i.e. light). Defaults to True.
+        out_name (str, optional): name of the saved heatmap. Defaults to 'interpolated.png'.
+
+    Returns:
+        str: name of the saved heatmap
+    """
 
     x = np.zeros(len(room), dtype=int)
     y = np.zeros(len(room), dtype=int)

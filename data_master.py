@@ -12,6 +12,11 @@ import PySimpleGUI as sg
 
 
 def read_measures(dataname):
+    """Read the measured values from the excel file
+
+    Args:
+        dataname (string): path of the file to be read
+    """
     wb = load_workbook(dataname, data_only=True)
     sh = wb['Confezionamento']
     print(len(wb.sheetnames))
@@ -25,6 +30,14 @@ def read_measures(dataname):
 
 
 def select_sheet(dataname):
+    """Selects the sheet of interest where data is stored
+
+    Args:
+        dataname (string): path of the file to be read
+
+    Returns:
+        list: list containg the measures
+    """
     wb = load_workbook(dataname, data_only=True)
     event, values = sg.Window(
         'Scegli un foglio di lavoro',
@@ -47,6 +60,11 @@ def select_sheet(dataname):
 
 
 def select_datatype():
+    """Selection of the data measured (either noise or radiation)
+
+    Returns:
+        boolean: False (to be read as 0) for noise and True (i.e. 1) for radiation
+    """
     event, values = sg.Window(
         'Scegli il tipo di misurazione effettuata',
         [[sg.Text('Scegli->'),

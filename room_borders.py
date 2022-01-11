@@ -14,6 +14,9 @@ import PySimpleGUI as sg
 
 
 def popup():
+    """
+    Popup that explains how to select the rooms from the floor map.
+    """
     understood = False
     layout = [[sg.Text('Seleziona una stanza trascinando il mouse da un angolo a quello opposto.\nUna volta selezionata la stanza, premi ENTER o SPAZIO, se commetti un errore, premi c.\nConclusa la selezione delle stanze in cui hai effettuato misure, premi ESC.')]]
     window = sg.Window('Istruzioni', layout)
@@ -26,6 +29,16 @@ def popup():
 
 
 def get_rooms(imgname):
+    """Select the rooms as ROIs by interaction of the user.
+
+    Args:
+        imgname (strin): path of the floor map.
+
+    Returns:
+        ndarray: array containing [x1,y1,x2,y2] for each room: 
+            (x1,y1) - top left point of the room
+            (x2,y2) - width and height of the room
+    """
     [folder, name] = os.path.split(imgname)
     rooms_path = folder+'/rooms_'+name+'.npy'
 
@@ -53,6 +66,12 @@ def get_rooms(imgname):
 
 
 def combine_plots(heatmap_paths, original_map):
+    """Puts the heatmaps on top of the floormap with transparency
+
+    Args:
+        heatmap_paths (array): array of strings containing the names of the heatmaps
+        original_map (string): path of the floor map file
+    """
     img = cv2.imread(original_map)
     [folder, floor_plan] = os.path.split(original_map)
     img_cpy = img.copy()
@@ -82,6 +101,16 @@ def combine_plots(heatmap_paths, original_map):
 
 
 def data2room(full_data, img_pathname):
+    """Takes the floor map and associates the measurements with the rooms.
+
+    Args:
+        full_data (list): list of zipped coordinates and measure
+        img_pathname (string): path of the floor map file
+
+    Returns:
+        list, array: 'room' containing the location of the measures inside each room and the measure itself,
+                     'sizes' containing the size of the rooms
+    """
     # Takes the clean image and evaluates the number and location of rooms via get_rooms;
     # next it assigns the points to the rooms
     global rooms_selection

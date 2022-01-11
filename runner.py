@@ -14,15 +14,21 @@ import numpy as np
 
 
 def main(img_pathname, data_pathname):
+    """Core of the software
+
+    Args:
+        img_pathname (string): path of the floor map
+        data_pathname (string): path of the data file
+    """
     [folder, floor_plan] = os.path.split(img_pathname)
 
-    # Once called, the function gets the measures from the excel sheet, and the coordinates from the click procedure
+    # * Once called, the function gets the measures from the excel sheet, and the coordinates from the click procedure
     print("*** Reading measures...")
     measures = dm.select_sheet(data_pathname)
     gp.core(img_pathname, n=len(measures))
     coordinates = np.load(folder+'/coords_'+floor_plan+'.npy')
 
-    # Define the full_data list, ((X,Y),measure)
+    # * Define the full_data list, ((X,Y),measure)
     if len(coordinates) == len(measures):
         full_data = list(zip(coordinates, measures))
     else:
@@ -31,13 +37,13 @@ def main(img_pathname, data_pathname):
         cutoff = min(len(coordinates), len(measures))
         full_data = list(zip(coordinates[:cutoff], measures[:cutoff]))
 
-    # It is needed in order to look for the rooms, the measurements therein and their size.
+    # * It is needed in order to look for the rooms, the measurements therein and their size.
     print("*** Obtaining rooms...")
     room, sizes = rb.data2room(full_data, img_pathname)
 
     # print("Room {} \n sizes {}".format(room,sizes))
 
-    # Create the heatmaps
+    # * Create the heatmaps
     print("*** Creating heatmaps...")
     heatmap_nameslist = ["" for i in range(len(room))]
     # print(heatmap_nameslist);print(type(heatmap_nameslist));
