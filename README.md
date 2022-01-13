@@ -17,17 +17,24 @@ The idea is the following:
 Future upgrade:
 - [ ] improve error messages and handling;
 - [ ] make the PoM selection process smarter, closing the figure as soon as the number of measurements is reached;
-- [ ] make the GUI nicer and clearer;
+- [x] make the GUI nicer and clearer;
 - [ ] enable one to use various floor maps, not only office-like ones;
 - [x] possible bug in the room count part of the code, where objects smaller than a certain amount are ignored. *10.01.21*
 
 ## Upgrade 10.01.21
-- `get_points` has been modified so that now, if the number of PoM is different than the number of measurements, the software doesn't crash, yet it chops the longest of the two, and keeps working (after pointing out the issue.)
-- `room_borders` has been modified so that one can now select the rooms with a process explained in the popup -- Only works for rectangular rooms.
+- `get_points` has been modified so that now, if the number of PoM is different than the number of measurements, the software doesn't crash, yet it chops the longest of the two, and keeps working (after pointing out the issue);
+- `room_borders` has been modified so that one can now select the rooms with a process explained in the popup -- Only works for rectangular rooms;
 - `requirements.txt` is the list of packages required in order to run the script (smoothly).  In order to install them all using `pip` type: ```pip install -r requirements.txt``` shouldn't it work, install them manually one by one (they are only 6, and probably some of them are already there). I am aware of only one issue with `tkinter` being too outdated, so in that case don't panic.
 
+## Upgrade 13.01.21
+- now the number of PoM to be selected on the floormap is shown in the top-left corner;
+- fixed a bug that made the script crush for if less than 4 points are picked in a room;
+- improved GUI and error handling if no file or floormap is selected; "Go" button has been removed.
 
 # How to
-Before launching the `data2map.py` script, assuming all the packages needed are installed, the only requirement is that both the floormap and the excel file containing the data are in the same folder.
+1 - Navigate to the directory where the scripts are, typing ```cd Folder/Containing/data2map/``` in the terminal.
+2 - Install the required packages typing ```pip install -r requirements.txt```.
+3 - If no error occurred, you can launch the `data2map.py` script by simply tiping ```python data2map.py``` and follow the instructions
 
-Once that is done, launch the script `data2map.py` and follow the instructions.
+## Requirements
+All the required packages are specified in `requirements.txt`. The script works with Python 3.8 (it has not been teste with different versions). At the moment, both the floormap and the excel file containing the measures have to be in the same folder.

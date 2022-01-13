@@ -16,7 +16,6 @@ global coords, ind
 coords = []
 
 
-# todo: investigate the role of flags and params (seems they're not used).
 def click_event(event, x, y, flags, params):
     """records the position and  number of position selected on the floor map.
 
@@ -26,8 +25,11 @@ def click_event(event, x, y, flags, params):
         y (itn): y position of the click
     """
     marker = '*'
+    countdown = "Punti rimasti da selezionare: "
+
     font = cv2.FONT_HERSHEY_SIMPLEX
     ((marker_width, marker_height), baseline) = cv2.getTextSize(marker, font, 1, 0)
+    ((frame_w, frame_h), baseline) = cv2.getTextSize(countdown+"100", font, 1, 0)
 
     # checking for left mouse clicks
     if event == cv2.EVENT_LBUTTONDOWN:
@@ -36,8 +38,10 @@ def click_event(event, x, y, flags, params):
         # displaying the coordinates on the image window
         coords.append((x, y))
         pointer = marker + str(len(coords))
-        cv2.putText(img, "Punti rimasti da selezionare: {}".format(
-            n_max), (0, 40), font, 2, (0, 0, 0), 2)
+        cv2.rectangle(img, (0, 0), (frame_w, frame_h+40),
+                      (255, 0, 255), thickness=-1)
+        cv2.putText(img, countdown+str(n_max-len(coords)),
+                    (0, 40), font, 1, (0, 0, 0), 2)
         cv2.putText(img, pointer, (x-int(marker_width/2), y +
                                    int(marker_height/2)), font, 1, (0, 0, 255), 2)
         cv2.imshow('image', img)
@@ -52,15 +56,13 @@ def click_event(event, x, y, flags, params):
 
     np.save(coords_path, coords)
 
-# todo: investigate the role of n
-
 
 def core(filename, n=0):
     """function that gets the points of measure on the floor map.
 
     Args:
         filename (string): path of the floor map
-        n (int, optional): to be investigated. Defaults to 0.
+        n (int, optional): total number of measures. Defaults to 0.
     """
     global coords_path, n_max
     # ? Does n do anything?
@@ -77,6 +79,11 @@ def core(filename, n=0):
         # print(coords_path+' found. Using coordinates previously selected.\n')
         coords = np.load(coords_path)
     else:
+        height = 780
+        (h, w) = img.shape[:2]
+        ratio = height/float(h)
+        resize = cv2.resize(img, (int(ratio*w), height),
+                            interpolation=cv2.INTER_AREA)
         cv2.imshow('image', img)  # displaying the image
         # setting mouse hadler for the image and calling the click_event() function
         cv2.setMouseCallback('image', click_event)

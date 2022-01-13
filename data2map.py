@@ -10,6 +10,7 @@ import os.path
 import runner
 global dataname, imgname
 
+sg.theme('BrownBlue')
 
 # * First the window layout in 2 columns
 
@@ -36,15 +37,18 @@ layout = [
         sg.Column(img_list_column),
         sg.Column(xcl_list_column)
     ],
-    [sg.Button("Via!"), sg.Exit()]
+    [sg.Exit()]
 ]
 
-window = sg.Window("Image Viewer", layout)
+window = sg.Window("Data2Map", layout)
+
+got_floormap = False
+got_data = False
 
 # * Run the Event Loop
-while True:
+while not (got_floormap * got_data):
     event, values = window.read()
-    if event == "Exit" or event == sg.WIN_CLOSED:
+    if event in (sg.WIN_CLOSED, 'Quit'):
         break
     # * Folder name was filled in, make a list of files in the folder
     if event == "-WORKING FOLDER-":
@@ -72,6 +76,7 @@ while True:
         try:
             imgname = os.path.join(
                 values["-WORKING FOLDER-"], values["-IMG LIST-"][0])
+            got_floormap = True
         except:
             pass
 
@@ -79,12 +84,16 @@ while True:
         try:
             dataname = os.path.join(
                 values["-WORKING FOLDER-"], values["-DATA LIST-"][0])
+            got_data = True
         except:
             pass
 
-    elif event == "Via!":
-        # print("Floor map in: {}\nData in: {}".format(imgname,dataname))
-        runner.main(imgname, dataname)
+window.close()
+# print("Floor map in: {}\nData in: {}".format(imgname,dataname))
+runner.main(imgname, dataname)
+# break
+# while True:
+# event, values = window.read()
+# if event == "Via!":
 
-        break
 window.close()

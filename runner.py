@@ -50,14 +50,13 @@ def main(img_pathname, data_pathname):
     light_vs_sound = dm.select_datatype()
     for i in range(0, len(room)):
         # print("len room[{}] = {}".format(i,len(room[i])))
-        if (len(room[i])) != 0:
+        if (len(room[i])) > 3:
             heatmap_nameslist[i] = folder + '/room{}'.format(i+1) + floor_plan
             # print(heatmap_nameslist[i])
             dummy = hm.heatmap(
                 room[i], sizes[i], is_light=light_vs_sound, out_name=heatmap_nameslist[i])
         else:
-            print("Zero length for room[{}]. Room[{}] = {}".format(
-                i, i, room[i]))
+            print("Need more measures for room[{}] = {}".format(i+1, room[i]))
 
     print("Combining plots...")
     rb.combine_plots(heatmap_nameslist, img_pathname)
