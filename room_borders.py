@@ -65,7 +65,7 @@ def get_rooms(imgname):
     return rois
 
 
-def combine_plots(heatmap_paths, original_map):
+def combine_plots(heatmap_paths, original_map, mode_name):
     """Puts the heatmaps on top of the floormap with transparency
 
     Args:
@@ -97,7 +97,7 @@ def combine_plots(heatmap_paths, original_map):
     beta = 1-alpha
     # performs weighted sum of the images and saves it on top of the first one
     cv2.addWeighted(img_cpy, alpha, img, beta, 0, img)
-    cv2.imwrite(folder+'/completed_'+floor_plan, img)
+    cv2.imwrite(folder+'/completed_'+mode_name+floor_plan, img)
 
 
 def data2room(full_data, img_pathname):

@@ -17,8 +17,8 @@ def main(img_pathname, data_pathname):
     """Core of the software
 
     Args:
-        img_pathname (string): path of the floor map
-        data_pathname (string): path of the data file
+        img_pathname (string): path of the floor map.
+        data_pathname (string): path of the data file.
     """
     [folder, floor_plan] = os.path.split(img_pathname)
 
@@ -59,7 +59,9 @@ def main(img_pathname, data_pathname):
             print("Need more measures for room[{}] = {}".format(i+1, room[i]))
 
     print("Combining plots...")
-    rb.combine_plots(heatmap_nameslist, img_pathname)
+    mode_name = ["Rumore_", "ROA_"]
+    rb.combine_plots(heatmap_nameslist, img_pathname,
+                     mode_name[light_vs_sound])
 
     for i in range(0, len(room)):
         if os.path.isfile(heatmap_nameslist[i]):

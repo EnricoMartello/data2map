@@ -65,7 +65,6 @@ def core(filename, n=0):
         n (int, optional): total number of measures. Defaults to 0.
     """
     global coords_path, n_max
-    # ? Does n do anything?
     n_max = n
     # reading the image
     # print('---CORE HERE---')
