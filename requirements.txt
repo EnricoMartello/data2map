@@ -1,5 +1,5 @@
 matplotlib==3.2.2
-numpy==1.21.0
+numpy==1.22.0
 opencv-python==4.5.2.54
 openpyxl==3.0.7
 PySimpleGUI==4.44.0
